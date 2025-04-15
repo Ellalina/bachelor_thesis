@@ -1,64 +1,70 @@
-Example plain HTML site using GitLab Pages.
+# Bachelor Thesis: Analysing the Foundation Models for Time-Series Forecasting
 
-Learn more about GitLab Pages at https://pages.gitlab.io and the official
-documentation https://docs.gitlab.com/ce/user/project/pages/.
+**University of Münster**  
+Department of Information Systems  
+Bachelor Thesis submitted by Chair for Data Science: Machine Learning and Data Engineering  
+**Submission Date:** 21.01.2024
+by Ellen Parthum
 
----
+## Overview
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+This repository contains the code and datasets for my bachelor thesis titled *"Analysing the Foundation Models for Time-Series Forecasting"*. The work explores various foundation models, including TimesFM and TimeGPT-1, for forecasting time-series data and compares their performance in different experimental settings.
 
-- [GitLab CI](#gitlab-ci)
-- [GitLab User or Group Pages](#gitlab-user-or-group-pages)
-- [Did you fork this project?](#did-you-fork-this-project)
-- [Troubleshooting](#troubleshooting)
+## Table of Contents
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+1. [Introduction](#introduction)
+2. [Background](#background)
+    - 2.1 Neural Networks
+    - 2.2 Transformer Architecture
+    - 2.3 Time-Series Foundation Models
+3. [Related Works](#related-works)
+4. [Methodology](#methodology)
+5. [Experimental Results](#experimental-results)
+    - 5.1 Dataset
+    - 5.2 Evaluation Parameters
+    - 5.3 Experimental Settings
+    - 5.4 Fine-Tuning
+6. [Discussion](#discussion)
+7. [Conclusion](#conclusion)
+8. [Appendix](#appendix)
+    - A.1 Table of Sources
+    - A.2 Table of Categorised Sources
+    - A.3 Graphs for zero-shot
+    - A.4 Graphs for fine-tuning
+    - A.5 Graphs comparing MSE, MAE, and RMSE
+    - A.6 Graphs for ARIMA
+9. [Code](#code)
+    - B.1 Code for TimesFM
+    - B.2 Code for TimeGPT-1
+    - B.3 Code for ARIMA
+10. [Datasets](#datasets)
+    - C.1 Dataset Code
+    - C.2 Dataset Zero-shot
+    - C.3 Dataset Fine-tuning
 
-## GitLab CI
+## Project Description
 
-This project's static Pages are built by [GitLab CI][ci], following the steps
-defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
+The goal of this research is to evaluate and compare the performance of different foundation models in the context of time-series forecasting. Specifically, it investigates the *TimesFM* and *TimeGPT-1* models, focusing on their ability to forecast time-series data with and without covariates, and their performance when fine-tuned for specific datasets.
 
-```
-image: busybox
+The thesis includes an analysis of various machine learning methods, such as neural networks and transformers, and applies them to real-world time-series data. Key metrics such as MSE, MAE, and RMSE are used to evaluate model performance.
 
-pages:
-  stage: deploy
-  script:
-  - echo 'Nothing to do...'
-  artifacts:
-    paths:
-    - public
-    expire_in: 1 day
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-```
+## Prerequisites
 
-The above example expects to put all your HTML files in the `public/` directory.
+Before running the code, you’ll need to have the following dependencies installed:
 
-## GitLab User or Group Pages
+- Python 3.x
+- TensorFlow
+- PyTorch
+- Scikit-learn
+- Matplotlib
+- NumPy
+- Pandas
 
-To use this project as your user/group website, you will need one additional
-step: just rename your project to `namespace.gitlab.io`, where `namespace` is
-your `username` or `groupname`. This can be done by navigating to your
-project's **Settings**.
+## Installing TimesFM and TimeGPT
+Instructions on how to install TimesFM and TimeGPT-1 can be found here:
 
-Read more about [user/group Pages][userpages] and [project Pages][projpages].
+TimesFM
+https://github.com/google-research/timesfm
 
-## Did you fork this project?
-
-If you forked this project for your own use, please go to your project's
-**Settings** and remove the forking relationship, which won't be necessary
-unless you want to contribute back to the upstream project.
-
-## Troubleshooting
-
-1. CSS is missing! That means that you have wrongly set up the CSS URL in your
-   HTML files. Have a look at the [index.html] for an example.
-
-[ci]: https://about.gitlab.com/gitlab-ci/
-[index.html]: https://gitlab.com/pages/plain-html/blob/master/public/index.html
-[userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
-[projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
+TimeGPT-1
+https://github.com/Nixtla/nixtla
